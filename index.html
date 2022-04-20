@@ -32,24 +32,38 @@
       <div class="controller">
         <div class="d-flex w-100 justify-content-center">
           <div>
-            <img src="./assets/images/up.png" />
+            <img src="./assets/images/up.png" id="up" onclick="handleUp()" />
           </div>
         </div>
         <div class="w-100 d-flex justify-content-between">
-          <div class="">
-            <img src="./assets/images/left.png" />
+          <div>
+            <img
+              src="./assets/images/left.png"
+              id="left"
+              onclick="handleLeft()"
+            />
           </div>
-          <div class="">
-            <img src="./assets/images/right.png" />
+          <div>
+            <img
+              src="./assets/images/right.png"
+              id="right"
+              onclick="handleRight()"
+            />
           </div>
         </div>
         <div class="d-flex w-100 justify-content-center">
-          <img src="./assets/images/down.png" />
+          <img
+            src="./assets/images/down.png"
+            id="down"
+            onclick="handleDown()"
+          />
         </div>
       </div>
-      <div class="board-game" id="board"></div>
-      <div class="Key">A</div>
-      <div class="Key" onclick="handleStartGame()">S</div>
+      <div id="board">
+        <div class="play-ground" id="playGround"></div>
+      </div>
+      <div class="Key" id="pickupBtn">A</div>
+      <div class="Key" id="startBtn" onclick="handleStartGame()">S</div>
     </div>
   </body>
   <script src="./code.js"></script>

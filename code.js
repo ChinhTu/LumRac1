@@ -40,20 +40,19 @@ const randomArrBlackPoints = () => {
 const board = $("board");
 
 const ReloadGround = () => {
+  $("playGround").remove();
+  const playGround = document.createElement("div");
+  playGround.setAttribute("id", "playGround");
+  playGround.setAttribute("class", "play-ground");
+  board.append(playGround);
   for (let i = 0; i <= rows; i++)
     for (let j = 0; j <= columns; j++) {
       const square = document.createElement("div");
       square.setAttribute("class", "square");
-      square.setAttribute("id", "square");
       square.setAttribute("data-x", i);
       square.setAttribute("data-y", j);
 
       if (isStartGame) {
-        console.log(
-          "🚀 ~ file: code.js ~ line 44 ~ ReloadGround ~ isStartGame",
-          isStartGame
-        );
-
         if (i === redPoint.redX && j === redPoint.redY) {
           const red = document.createElement("div");
           red.setAttribute("class", "red");
@@ -65,16 +64,47 @@ const ReloadGround = () => {
           square.append(black);
         }
       }
-      board.append(square);
-      console.log(
-        "🚀 ~ file: code.js ~ line 73 ~ ReloadGround ~ square",
-        square
-      );
+      playGround.append(square);
     }
+};
+ReloadGround();
+
+const upBtn = $("up");
+const downBtn = $("down");
+const leftBtn = $("left");
+const rightBtn = $("right");
+
+const handleUp = () => {
+  if (redPoint.redX > 0) {
+    redPoint.redX--;
+    ReloadGround();
+  }
+};
+
+const handleDown = () => {
+  if (redPoint.redX < rows) {
+    redPoint.redX++;
+    ReloadGround();
+  }
+};
+
+const handleLeft = () => {
+  if (redPoint.redY > 0) {
+    redPoint.redY--;
+    ReloadGround();
+  }
+};
+
+const handleRight = () => {
+  if (redPoint.redY < columns) {
+    redPoint.redY++;
+    ReloadGround();
+  }
 };
 
 const handleStartGame = () => {
   isStartGame = true;
   alert("Start Game");
+  randomArrBlackPoints();
   ReloadGround();
 };
